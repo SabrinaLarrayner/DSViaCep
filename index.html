@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSViaCep</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300&family=Montserrat:wght@600;800&family=Mulish:wght@500&family=Open+Sans:wght@400;700&family=Roboto:wght@400;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="nav-container"> <!--Header, é a cabeça do corpo, ou seja onde estará a minha navegação e etc..     -->
+        <nav class="nav-main">
+            <h1>DEViaCEP</h1>
+            <div class="contact-link">Contato</div>
+        </nav>
+    </header>
+    <main> <!-- Main, é o corpo do projeto, onde fica meu formulario e etc...-->
+        <section id="form-section" class="form-container">
+            <div class="card-form">
+            <form name="newAddres">
+                <div class="form-control">
+                    <label for="cep">Cep: </label><!--"FOR -> cep" cep é a entidade do label-->
+                        <input name="cep" 
+                        id="cep" 
+                        class="form-input" 
+                        type="text" 
+                        placeholder="CEP"><!--O mesmo nome que coloquei no 'FOR' tem que ser do 'ID'-->  
+                        <div class="error-menssage" data-error="cep">Campo requerido</div>     
+                </div>
+           
+            <div class="form-control">
+                <label for="street">Logradouro:</label><!--"FOR -> cep" cep é a entidade do label-->
+                    <input name="street"
+                     id="street" 
+                     class="form-input" 
+                     type="text" 
+                     placeholder="Logradouro"
+                     disabled
+                     >
+                     
+                    <!--O mesmo nome que coloquei no 'FOR' tem que ser do 'ID'-->
+            </div>
+            <div  class="form-control">
+                <label for="number">Número:</label> <!--"FOR -> cep" cep é a entidade do label-->
+                    <input 
+                    name="number" 
+                    id="number" 
+                    class="form-input" 
+                    type="text" 
+                    placeholder="Número"><!--O mesmo nome que coloquei no 'FOR' tem que ser do 'ID'-->
+                    <div class="error-menssage" data-error="number">Campo requerido</div>
+            </div>
+            <div class="form-control">
+                <label for="city"> Cidade:</label><!--"FOR -> cep" cep é a entidade do label-->
+                    <input 
+                    name="city" 
+                    id="city" 
+                    class="form-input"
+                     type="text" 
+                     placeholder="Cidade"
+                     disabled
+                     > <!--O mesmo nome que coloquei no 'FOR' tem que ser do 'ID'-->     
+                </div>
+            <div class="btn-container">
+                <button name="btnSave" class="btn btn-left" type="submit">Salvar</button>
+                <button name="btnClear" class="btn btn-right">Limpar</button>
+            </div>
+        </form>
+        </div> 
+        </section>
+        <section id="list-section" class="list-container">
+            <div class="card-list-item">
+                <h3>São Paulo</h3> 
+                <p class="addres-line">Rua dos Jardins, 720</p>
+                <p class="addres-cep">11200-345</p>
+            </div>
+            <div class="card-list-item">
+                <h3>São Paulo</h3> 
+                <p class="addres-line">Rua dos Jardins, 720</p>
+                <p class="addres-cep">11200-345</p>
+            </div>
+        </section>
+    </div>
+    </main>
+    <script type="module" src="./js/dsViaCep.js"></script>
+</body>
+
+</html>
