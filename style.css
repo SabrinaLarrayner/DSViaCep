@@ -1,3 +1,5 @@
+@import 'modal.css';
+@import 'button.css';
 * {
     box-sizing: border-box;
     padding: 0;
@@ -68,26 +70,6 @@ padding: 40px 20px;  /*o primeiro se refere o espaço em cima e o segundo os esp
 .form-input:disabled {
     background-color: #ddd;
 }
-.btn-container{
-    display: flex;
-    justify-content: space-between; 
-}
-.btn{
-    width: 250px;
-    height: 50px;
-    background-color: #FF8400;
-    border: 0;
-    border-radius: 4px;
-    color: #fff;
-    font-weight: 700;
-    font-size: 14px;
-}
-.btn-left{
- margin-right: 10px;    
-}
-.btn-right{
-    margin-left: 10px;
-}
 .list-container{
 width: 100%;
 padding: 0 20px;
@@ -111,6 +93,7 @@ align-items: center;
 .addres-line{
     color: #fff;
     font-size: 14px;
+    
 }
 .addres-cep{
     color: #8f8f8f;

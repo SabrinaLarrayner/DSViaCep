@@ -1,7 +1,7 @@
 
 import Addres from '../models/addres.js';
 import * as adressService from '../services/addres-service.js';
-
+import * as listController from '../controllers/list-controllers.js'
 function State(){
     this.addres = new Addres();
 
@@ -41,7 +41,7 @@ export function init (){
     state.btnClear.addEventListener('click', handleBtnClearClick);
     state.btnSave.addEventListener('click', handleBtnSaveClick);
     state.btnSave.addEventListener('change', handleInputCepChange);
-    state.inputCep = addEventListener('change', handleInputCepChange)
+    state.inputCep.addEventListener('change', handleInputCepChange)
 } // aqui nessa função "init" iniciamos todos os valores do estado dentro da função "init" (iniciar)
 
 function handleInputErrorKeyup(event){
@@ -53,15 +53,14 @@ async function handleInputCepChange (event){
     try{
         const addres = await  adressService.fidnByCep(cep)
         state.inputStreet.value = addres.street;
-        state.inputCity.value = addres.city ;
+        state.inputCity.value = addres.city;
         state.addres =  addres;
-        setFormErro("cep", "")
+        setFormErro("cep", " ");
         state.inputNumber.focus();
     }
     catch (e){
-        
-        state.inputStreet.value = "";  
-        state.inputCity.value ="";    
+        state.inputStreet.value = " ";  
+        state.inputCity.value =" ";    
         setFormErro("cep", "Informe cep válido")
     }
 
@@ -69,9 +68,17 @@ async function handleInputCepChange (event){
 
 async function handleBtnSaveClick (event){
     event.preventDefault();
-    console.log(state.addres)
-}
-
+    const errors = adressService.getErrors(state.addres);
+    const keys = Object.keys(errors);
+    if (keys.length > 0){
+       for ( let i = 0; i < keys.length; i++){
+        setFormErro(keys[i], errors[keys[i]]);
+      } }
+      else {
+        listController.addCard(state.addres);
+        clearForm();   
+      }
+    }   
 function handleInputErrorChange(event){
     if (event.target.value == "") /*estamos pegando um evento que está na parametrização, e a função "target" verifica s eo campoe stá vazio*/{
     setFormErro("number", "Campo requerido!");
@@ -95,6 +102,7 @@ function handleBtnClearClick(event){
     setFormErro ("cep", "")
     setFormErro ("number", "")
 
+    state.addres = new Addres();
     state.inputCep.focus(); // Ao clicar em limpar, a função "focus"  irá jogar o cursor para o primeiro input, nesse caso é o CEP
 
  }
@@ -103,16 +111,3 @@ function setFormErro(key, value) /* estamos passando a chave pleo "key" e deois 
         const element = document.querySelector(`[data-error="${key}"]`);  // "key" é a minha chave que vou passar como argumento
         element.innerHTML = value;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
